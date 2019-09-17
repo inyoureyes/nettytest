@@ -10,7 +10,7 @@ import io.netty.buffer.ByteBufAllocator;
  */
 public class PacketCodeC {
 
-    private static final int MAGIC_NUMBER = 0x12345678;
+    public static final int MAGIC_NUMBER = 0x12345678;
 
     private PacketCodeC (){};
 
@@ -96,6 +96,10 @@ public class PacketCodeC {
             return LoginRequestPacket.class;
         }else if(commandInt == 2){
             return LoginReponsePacket.class;
+        }else if(commandInt == 3){
+            return MessageRequestPacket.class;
+        }else if(commandInt == 4){
+            return MessageResponsePacket.class;
         }
         return null;
     }

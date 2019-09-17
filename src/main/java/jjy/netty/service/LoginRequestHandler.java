@@ -14,6 +14,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginRequestPacket loginRequestPacket) throws Exception {
+        System.out.println("----发现客户端登录----");
         LoginReponsePacket loginReponsePacket = new LoginReponsePacket();
         if(voliate(loginRequestPacket)){
             System.out.println("用户："+loginRequestPacket.getUsername()+"登陆成功!");
@@ -24,9 +25,8 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             loginReponsePacket.setErrorMsg("密码校验失败!");
 
         }
-        channelHandlerContext.writeAndFlush(loginReponsePacket);
+        channelHandlerContext.channel().writeAndFlush(loginReponsePacket);
     }
-
     private boolean voliate(LoginRequestPacket loginRequestPacket) {
         return true;
     }

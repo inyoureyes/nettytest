@@ -22,7 +22,7 @@ public class ServiceChanelInitializer extends ChannelInitializer<Channel> {
         channel.pipeline()
                 .addLast(new PackDecoder())
                 .addLast(new LoginRequestHandler())
-                .addLast(new MyChannelInboundHandler())
+                .addLast(new MessageRequestHandler())
                 .addLast(new PackEncoder());
     }
 }
